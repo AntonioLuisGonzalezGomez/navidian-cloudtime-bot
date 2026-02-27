@@ -64,7 +64,7 @@ Designed for both automated and manual operation with holiday-aware scheduling.
 3. Start Selenoid and the bot:
 
 ```
-   docker compose up -d selenoid selenoid-ui`
+   docker compose up -d selenoid selenoid-ui navidian-bot
 ```
 
 ## Automated Execution (Cron)
