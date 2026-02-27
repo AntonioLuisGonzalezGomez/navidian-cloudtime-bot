@@ -94,16 +94,6 @@ alias navidian-logfile="ssh user@server cat /path/to/navidian_logs.txt"
 
 - Useful for debugging or emergency interventions.
 
-## Security Considerations
-
-- Do not commit .env with real credentials
-
-- .gitignore includes .env, logs, and temporary files
-
-- Use SSH keys for remote execution
-
-- Passwords are only read from environment variables
-
 ## License
 
 This project is released under the MIT License.
