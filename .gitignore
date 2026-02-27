@@ -4,3 +4,4 @@ __pycache__/
 .idea
 navidian_logs.txt
 cron_logs.txt
+*.iml
