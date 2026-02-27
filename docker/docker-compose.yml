@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  selenoid:
+    image: aerokube/selenoid:latest-release
+    container_name: selenoid
+    restart: always
+    ports:
+      - "4444:4444"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "../selenoid/browsers.json:/etc/selenoid/browsers.json:ro"
+    command: [
+      "-conf", "/etc/selenoid/browsers.json"
+    ]
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest
+    container_name: selenoid-ui
+    restart: always
+    ports:
+      - "8090:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  navidian-bot:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      - NAVIDIAN_USER=${NAVIDIAN_USER}
+      - NAVIDIAN_PASSWORD=${NAVIDIAN_PASSWORD}
+      - NAVIDIAN_TELEWORK=${NAVIDIAN_TELEWORK}
+      - NAVIDIAN_COMPENSATION=${NAVIDIAN_COMPENSATION}
+      - NAVIDIAN_PAUSE=${NAVIDIAN_PAUSE}
+      - SELENIUM_GRID_URL=http://selenoid:4444/wd/hub
+    depends_on:
+      - selenoid

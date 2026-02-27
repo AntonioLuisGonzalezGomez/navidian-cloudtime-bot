@@ -1,0 +1,3 @@
+alias navidian-start="ssh user@server docker compose run --rm navidian-bot"
+alias navidian-stop="ssh user@server docker stop navidian-bot"
+alias navidian-logs="ssh user@server docker logs -f navidian-bot"
