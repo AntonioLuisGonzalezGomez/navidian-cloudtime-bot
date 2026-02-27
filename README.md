@@ -107,15 +107,34 @@ Example per-day configuration
 Add to your `.bashrc` (or `.zshrc`) as examples:
 
 ```
-alias navidian-start="ssh user@server docker compose run --rm navidian-bot"
+# Start the Navidian bot for a specific user (runs once and exits)
+alias navidian-start="ssh user@server docker compose run --rm navidian-bot <USER> <PASSWORD> <TELEWORK> [COMPENSATION] [PAUSE]"
+
+# Stop a running bot container
 alias navidian-stop="ssh user@server docker stop navidian-bot"
+
+# Follow real-time logs of the running bot
 alias navidian-logs="ssh user@server docker logs -f navidian-bot"
+
+# View the accumulated log file on the server
 alias navidian-logfile="ssh user@server cat /path/to/navidian_logs.txt"
 ```
 
-- Allows manual start/stop, real-time log viewing, and log inspection.
+- Allows **manual start and stop** of the bot.
 
-- Useful for debugging or emergency interventions.
+- Enables **real-time monitoring** and **log inspection**.
+
+- Useful for **debugging**, **emergency interventions**, **or testing new users**.
+
+### Notes:
+```
+<USER> → Navidian username
+<PASSWORD> → Navidian password
+<TELEWORK> → y for remote work, n for on-site
+[COMPENSATION] → optional time adjustment in minutes
+[PAUSE] → optional y/n to enable automatic pause
+```
+
 
 ## License
 
