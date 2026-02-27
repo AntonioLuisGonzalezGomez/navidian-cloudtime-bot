@@ -67,11 +67,11 @@ Designed for both automated and manual operation with holiday-aware scheduling.
 
 Example cron entries:
 
-### Run user 53689179A every Monday, Thursday, Friday
+### Run user 33333333A every Monday, Thursday, Friday
 
 `0 8 * * 1,4,5 /path/to/scripts/ficharDelayed.sh`
 
-### Run user 53689179A with alternate parameter every Tuesday, Thursday
+### Run user 33333333A with alternate parameter every Tuesday, Thursday
 
 `0 8 * * 2,4 /path/to/scripts/ficharDelayed.sh`
 
