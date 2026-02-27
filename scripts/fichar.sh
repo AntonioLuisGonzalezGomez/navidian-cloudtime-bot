@@ -1,10 +1,12 @@
 #!/bin/bash
-# Script to run Navidian bot in Docker
-# Uses environment variables for credentials
+# ================================================================
+# Run Navidian bot using Docker
+# Uses environment variables: NAVIDIAN_USER, NAVIDIAN_PASSWORD, NAVIDIAN_TELEWORK, NAVIDIAN_COMPENSATION, NAVIDIAN_PAUSE
+# ================================================================
 
 echo "$(date)::: Starting Navidian bot"
 
-cd $(dirname "$0")/..
+cd "$(dirname "$0")/.."
 
 docker compose run --rm navidian-bot
 
