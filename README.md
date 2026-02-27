@@ -69,19 +69,38 @@ Designed for both automated and manual operation with holiday-aware scheduling.
 
 ## Automated Execution (Cron)
 
-Example cron entries:
+The ficharDelayed.sh script accepts the following parameters:
 
-### Run user 33333333A every Monday, Thursday, Friday
+```
+ficharDelayed.sh <USER> <PASSWORD> <TELEWORK> [COMPENSATION] [PAUSE]
 
-`0 8 * * 1,4,5 /path/to/scripts/ficharDelayed.sh`
+- <USER> → your Navidian username
+- <PASSWORD> → your password
+- <TELEWORK> → y if working remotely, n if on-site
+- [COMPENSATION] → minutes to adjust the workday (optional)
+- [PAUSE] → y/n to enable automatic pause (optional)
+````
 
-### Run user 33333333A with alternate parameter every Tuesday, Thursday
+Example per-day configuration
 
-`0 8 * * 2,4 /path/to/scripts/ficharDelayed.sh`
+```
+# Monday, Thursday, Friday: remote work
+0 8 * * 1,4,5 /omv/scripts/ficharDelayed.sh 33333333A PASSWORD y >> /omv/scripts/cron_logs.txt 2>&1
 
-The ficharDelayed.sh script includes a random delay (0-15 min) and holiday check.
+# Tuesday: on-site work
+0 8 * * 2 /omv/scripts/ficharDelayed.sh 33333333A PASSWORD n >> /omv/scripts/cron_logs.txt 2>&1
 
-Holidays can be customized inside the script.
+# Wednesday (optional): choose remote or on-site as needed
+0 8 * * 3 /omv/scripts/ficharDelayed.sh 33333333A PASSWORD y >> /omv/scripts/cron_logs.txt 2>&1
+```
+
+
+- Each line corresponds to a **specific day of the week** and can pass a different `<TELEWORK>` value.
+
+- The script includes a **random delay** and a **holiday check**, so it runs safely and automatically.
+
+- Logs are written to `cron_logs.txt` for tracking.
+
 
 ## Manual Execution (SSH Aliases)
 
