@@ -41,13 +41,15 @@ Designed for both automated and manual operation with holiday-aware scheduling.
 
 1. Clone the repository:
 
-`git clone https://github.com/yourusername/navidian-cloudtime-bot.git`
-
-`cd navidian-cloudtime-bot`
-
+```
+   git clone https://github.com/yourusername/navidian-cloudtime-bot.git
+   cd navidian-cloudtime-bot`
+```
 2. Copy .env.example to .env and configure your credentials:
 
-`cp .env.example .env`
+```
+   cp .env.example .env`
+```
 
 - NAVIDIAN_USER → your Navidian CloudTime username
 
@@ -61,7 +63,9 @@ Designed for both automated and manual operation with holiday-aware scheduling.
 
 3. Start Selenoid and the bot:
 
-`docker compose up -d selenoid selenoid-ui`
+```
+   docker compose up -d selenoid selenoid-ui`
+```
 
 ## Automated Execution (Cron)
 
